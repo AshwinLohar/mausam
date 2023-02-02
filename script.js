@@ -1,3 +1,5 @@
+const apiKey = "72b830125cec4469997133741230901";
+
 /*-----setting_button_color-----*/
 const div = document.querySelector("#body");
 const style = window.getComputedStyle(div, false);
@@ -29,7 +31,6 @@ function resetLocations() {
 
 function search() {
   search_location = document.getElementById("search_box").value;
-  const apiKey = "72b830125cec4469997133741230901";
   const location_list = [];
   let s = document.querySelector(".suggestion");
 
@@ -57,8 +58,24 @@ function search() {
 }
 
 /*-----seach_option_eventlistner-----*/
-function getData() {
-  console.log("location selected");
+function getData(i) {
+  let temp = document.getElementsByClassName("suggestion_options");
+  var location = temp[i].innerHTML;
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.open(
+    "GET",
+    "http://api.weatherapi.com/v1/forecast.json?key=" +
+      apiKey +
+      "&q=" +
+      location +
+      "&days=7&aqi=no&alerts=no"
+  );
+  xmlhttp.send();
+  xmlhttp.onload = function () {
+    const myObj = JSON.parse(this.responseText);
+    console.log(myObj);
+    data = [];
+  };
 }
 
 resetLocations();
