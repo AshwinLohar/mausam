@@ -30,7 +30,54 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    position: fixed;
+    left: 0px;
+    padding: 2em 4em;
 }
+#title {
+    text-decoration: none;
+    font-weight: 500;
+}
+.current {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5em;
+}
+.location_time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.icon_weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#current_temp {
+    font-size: 6em;
+    font-weight: 500;
+}
+#location {
+    font-size: 3em;
+    font-weight: 500;
+}
+.crop_container {
+    height: 4em;
+    aspect-ratio: 1 / 1;
+}
+#current_icon {
+    height: 5em;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+}
+.left_filler_big {
+    height: 50vh;
+}
+/*----------left_end----------*/
 
 /*----------glass----------*/
 .glass {
@@ -43,6 +90,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+body::-webkit-scrollbar {
+    display: none;
 }
 /*-----search_section-----*/
 .search {
@@ -112,3 +162,66 @@
     justify-content: space-between;
     margin-bottom: 1.8em;
 }
+/*-----weather_details_ends-----*/
+
+/*-----hourly_section-----*/
+.hourly_section {
+    width: 100%;
+    display: none;
+    justify-content: flex-start;
+    background: linear-gradient(135deg , rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 1em;
+    gap: 2em;
+    overflow-x: scroll;
+}
+.hourly_section::-webkit-scrollbar {
+    display: none;
+}
+.hour {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hour > img {
+    width: 4em;
+    aspect-ratio: 1 / 1;
+}
+/*-----hourly_section_ends-----*/
+
+/*-----future_forecast-----*/
+.future_forecast {
+    width: 85%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.future_forecast > p {
+    font-weight: 500;
+}
+.future_forecast_item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 29% 18% 18% 29%;
+    align-items: center;
+    margin-bottom: 1.8em;
+    gap: 2%;
+}
+.future_forecast_item > p:nth-of-type(1) {
+    justify-self: start;
+}
+.future_forecast_item > img {
+    justify-self: end;
+    height: 3em;
+    aspect-ratio: 1 / 1;
+}
+.future_forecast_item > p:nth-of-type(2) {
+    justify-self: start;
+}
+.future_forecast_item > p:nth-of-type(3) {
+    justify-self: end;
+}
+/*-----future_forecast_ends-----*/

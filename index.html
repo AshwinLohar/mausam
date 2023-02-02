@@ -9,7 +9,27 @@
   </head>
   <body id="body">
     <div class="left">
-      <a href="index.html">mausam.com</a>
+      <a id="title" href="index.html">mausam.com</a>
+      <div class="left_filler_big"></div>
+      <div class="current">
+        <div id="current_temp">20°</div>
+        <div class="location_time">
+          <div id="location">London</div>
+          <div id="time">16:00 - Thursday, 2 Feb 23</div>
+        </div>
+        <div class="icon_weather">
+          <div class="crop_container">
+            <img
+              id="current_icon"
+              src="//cdn.weatherapi.com/weather/64x64/night/113.png"
+              alt="Clear"
+              srcset=""
+            />
+          </div>
+          <p id="current_condition">Clear</p>
+        </div>
+      </div>
+      <div class="hourly_section"></div>
     </div>
     <div class="glass">
       <div class="search">
@@ -37,40 +57,47 @@
         <div class="section_filler"></div>
         <div class="weather_item">
           <p>Feels Like</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Humidity</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>UV</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Wind Speed</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Wind Direction</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Cloud</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Precipitation</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Pressure</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
         <div class="weather_item">
           <p>Visibility</p>
-          <p></p>
+          <p class="weather_item_field"></p>
         </div>
+      </div>
+      <div class="section_filler"></div>
+      <div class="section_line"></div>
+      <div class="section_filler"></div>
+      <div class="future_forecast">
+        <p>Future Forecast</p>
+        <div class="section_filler"></div>
       </div>
     </div>
     <link
