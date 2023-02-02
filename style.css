@@ -37,6 +37,10 @@
 #title {
     text-decoration: none;
     font-weight: 500;
+    transition: 0.5s;
+}
+#title:hover {
+    font-size: 1.05em;
 }
 .current {
     display: none;
@@ -89,7 +93,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center;    
+    scroll-behavior: smooth;
 }
 body::-webkit-scrollbar {
     display: none;
@@ -124,6 +129,15 @@ body::-webkit-scrollbar {
     width: 15%;
     aspect-ratio: 1 / 1;
     border: none;
+    background: linear-gradient(135deg , rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(250px);
+    -webkit-backdrop-filter: blur(250px);
+    border-bottom-left-radius: 0.5em;
+    transition-duration: 0.5s;
+    opacity: 0.7;
+}
+#search_button:hover {
+    opacity: 1;
 }
 /*--search_suggestion--*/
 .search_result {
@@ -134,9 +148,13 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     gap: 1.8em;
+    transition: 0.5s;
 }
 .suggestion > a {
     text-decoration: none;
+}
+.suggestion > a:hover {
+    font-size: 1.05em;
 }
 /*-----search_section_ends-----*/
 
@@ -155,6 +173,7 @@ body::-webkit-scrollbar {
 }
 .weather_details > p {
     font-weight: 500;
+    font-size: 1.1em;
 }
 .weather_item {
     width: 100%;
@@ -174,7 +193,9 @@ body::-webkit-scrollbar {
     -webkit-backdrop-filter: blur(25px);
     padding: 1em;
     gap: 2em;
-    overflow-x: scroll;
+    overflow-x: scroll;    
+    scroll-behavior: smooth;
+    border-radius: 0.5em;
 }
 .hourly_section::-webkit-scrollbar {
     display: none;
@@ -201,6 +222,7 @@ body::-webkit-scrollbar {
 }
 .future_forecast > p {
     font-weight: 500;
+    font-size: 1.1em;
 }
 .future_forecast_item {
     width: 100%;
@@ -225,3 +247,54 @@ body::-webkit-scrollbar {
     justify-self: end;
 }
 /*-----future_forecast_ends-----*/
+
+
+
+@media only screen and (max-width: 425px) {
+    * {
+        font-size: 4vw;
+    }
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .left {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1em 1em;
+    }
+    .left_filler_big {
+    }
+    .glass {
+        width: 100%;
+    }
+    .current {
+        width: 100%;
+        gap: 0.7em;
+        justify-content: space-evenly;
+    }
+    #current_temp {
+        font-size: 3em;
+    }
+    #location {
+        font-size: 1em;
+    }
+    #time {
+        font-size: 1em;
+    }
+    .crop_container {
+        height: 1.5em;
+        aspect-ratio: 1 / 1;
+    }
+    #current_icon {
+        height: 2em;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+    
+    }
+    #current_condition {
+        font-size: 1em;
+    }
+}

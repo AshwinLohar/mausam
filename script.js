@@ -1,11 +1,11 @@
 const apiKey = "72b830125cec4469997133741230901";
 
 /*-----setting_button_color-----*/
-const div = document.querySelector("#body");
+/*const div = document.querySelector("#body");
 const style = window.getComputedStyle(div, false);
 const bi = style.backgroundImage.slice(-12, -6);
 console.log(bi);
-document.getElementById("search_button").style.backgroundColor = "#" + bi;
+document.getElementById("search_button").style.backgroundColor = "#" + bi;*/
 
 /*-----default_locations-----*/
 default_locations = [
@@ -154,7 +154,7 @@ function assignValues(data) {
   field[5].innerHTML = data[10] + " %";
   field[6].innerHTML = data[11] + " %";
   field[7].innerHTML = data[12] + " mb";
-  field[8].innerHTML = data[13] + "km";
+  field[8].innerHTML = data[13] + " km";
 }
 
 function assignHourly(myObj) {
@@ -205,10 +205,10 @@ function assignFutureForecast(myObj) {
 const section = document.querySelector(".hourly_section");
 section.addEventListener("wheel", function (e) {
   if (e.deltaY > 0) {
-    section.scrollLeft += 50;
+    section.scrollLeft += 115;
     e.preventDefault();
   } else {
-    section.scrollLeft -= 50;
+    section.scrollLeft -= 115;
     e.preventDefault();
   }
 });
