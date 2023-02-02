@@ -37,7 +37,7 @@
 #title {
     text-decoration: none;
     font-weight: 500;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 #title:hover {
     font-size: 1.05em;
@@ -124,6 +124,7 @@ body::-webkit-scrollbar {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
   font-size: 2em;
   color: black;
+  transition-duration: 0.4s;
 }
 #search_button {
     width: 15%;
@@ -133,7 +134,7 @@ body::-webkit-scrollbar {
     backdrop-filter: blur(250px);
     -webkit-backdrop-filter: blur(250px);
     border-bottom-left-radius: 0.5em;
-    transition-duration: 0.5s;
+    transition-duration: 0.4s;
     opacity: 0.7;
 }
 #search_button:hover {
@@ -148,10 +149,10 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     gap: 1.8em;
-    transition: 0.5s;
 }
 .suggestion > a {
     text-decoration: none;
+    transition: 0.4s;
 }
 .suggestion > a:hover {
     font-size: 1.05em;

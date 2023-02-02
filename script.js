@@ -9,11 +9,11 @@ document.getElementById("search_button").style.backgroundColor = "#" + bi;*/
 
 /*-----default_locations-----*/
 default_locations = [
-  "Birmingham",
-  "Manchester",
-  "New York",
-  "California",
-  "New York",
+  "Bombay, Maharashtra, India",
+  "New Delhi, Delhi, India",
+  "Windsor, Ontario, Canada",
+  "New York, New York, United States of America",
+  "London, City of London, Greater London, United Kingdom",
 ];
 const months = [
   "Jan",
@@ -68,13 +68,15 @@ function search() {
   xmlhttp.send();
   xmlhttp.onload = function () {
     const myObj = JSON.parse(this.responseText);
+    console.log(myObj);
     s.innerHTML = "";
     for (var i = 0; i < myObj.length; i++) {
       let temp = document.createElement("a");
       temp.href = "javascript:getData(" + i + ")";
       temp.className = "suggestion_options";
       temp.id = i;
-      temp.innerHTML = myObj[i].name;
+      temp.innerHTML =
+        myObj[i].name + ", " + myObj[i].region + ", " + myObj[i].country;
       s.append(temp);
     }
   };
@@ -96,7 +98,7 @@ function getData(i) {
   xmlhttp.send();
   xmlhttp.onload = function () {
     const myObj = JSON.parse(this.responseText);
-    console.log(myObj);
+    setBackground(myObj);
     data = [myObj.current.temp_c, myObj.location.name];
     const d = new Date(myObj.location.localtime);
     data.push(
@@ -159,8 +161,8 @@ function assignValues(data) {
 
 function assignHourly(myObj) {
   const hrly = document.querySelector(".hourly_section");
+  hrly.innerHTML = "";
   hrly.style.display = "flex";
-  console.log(myObj.forecast.forecastday[0].hour[0].temp_c);
   for (var i = 0; i < 24; i++) {
     let h = document.createElement("div");
     h.className = "hour";
@@ -179,6 +181,7 @@ function assignHourly(myObj) {
 }
 function assignFutureForecast(myObj) {
   const ftfr = document.querySelector(".future_forecast");
+  ftfr.innerHTML = "";
   ftfr.style.display = "flex";
   for (var i = 0; i < myObj.forecast.forecastday.length; i++) {
     let temp = document.createElement("div");
@@ -201,6 +204,77 @@ function assignFutureForecast(myObj) {
   }
 }
 
+function setBackground(myObj) {
+  let b = document.querySelector("#body");
+  var c = myObj.current.condition.text.toLowerCase();
+  var result = isDay(myObj);
+  if (c.includes("sunny")) {
+    b.style.backgroundImage = "url('assets/sunny.jpg')";
+  } else if (c.includes("clear")) {
+    b.style.backgroundImage = "url('assets/clear.jpg')";
+  } else if (c.includes("cloudy")) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_cloudy.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_cloudy.jpg')";
+    }
+  } else if (c.includes("overcast")) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_overcast.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_overcast.jpg')";
+    }
+  } else if (c.includes("mist")) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_mist.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_mist.jpg')";
+    }
+  } else if (c.includes("thunder")) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_thunder.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_thunder.jpg')";
+    }
+  } else if (
+    c.includes("rain") ||
+    c.includes("sleet") ||
+    c.includes("drizzle")
+  ) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_rain.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_rain.jpg')";
+    }
+  } else if (
+    c.includes("snow") ||
+    c.includes("blizzard") ||
+    c.includes("pellets")
+  ) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_snow.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_snow.jpg')";
+    }
+  } else if (c.includes("fog")) {
+    if (result) {
+      b.style.backgroundImage = "url('assets/day_fog.jpg')";
+    } else {
+      b.style.backgroundImage = "url('assets/night_fog.jpg')";
+    }
+  }
+}
+
+function isDay(myObj) {
+  var d = new Date(myObj.location.localtime);
+  var time = d.getHours();
+  var day = myObj.forecast.forecastday[0].hour[time].is_day;
+  if (day) {
+    return true;
+  } else {
+    return false;
+  }
+}
 /*-----for_horizontal_scroll-----*/
 const section = document.querySelector(".hourly_section");
 section.addEventListener("wheel", function (e) {

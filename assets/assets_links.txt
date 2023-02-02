@@ -1,0 +1,23 @@
+sunny			https://www.pexels.com/photo/blue-sky-281260/
+clear			https://www.pexels.com/photo/blue-universe-956981/
+
+day_cloudy		https://www.pexels.com/photo/blue-skies-53594/
+night_cloudy	https://www.pexels.com/photo/blue-and-white-sky-with-stars-4737484/
+
+day_overcast	https://www.pexels.com/photo/ocean-water-378279/
+night_overcast	https://www.pexels.com/photo/mountains-under-dark-clouds-in-evening-5592630/
+
+day_mist		https://www.pexels.com/photo/golden-hour-photo-163323/
+night_mist		https://www.pexels.com/photo/gray-asphalt-road-with-fog-during-night-time-6494923/
+
+day_rain		https://www.pexels.com/photo/water-rainy-rain-raindrops-110874/
+night_rain		https://www.pexels.com/photo/selective-photography-of-glass-window-with-drops-of-water-during-nighttime-761680/
+
+day_snow		https://www.pexels.com/photo/black-and-gray-mountain-ruins-691581/
+light_snow		https://www.pexels.com/photo/snowy-empty-alley-in-winter-holidays-7146603/
+
+day_thunder		https://www.pexels.com/photo/lightning-photography-2226190/
+night_thunder	https://www.pexels.com/photo/lightning-strike-on-city-1114688/
+
+day_fog		https://www.pexels.com/photo/foggy-mountain-978844/
+night_fog		https://www.pexels.com/photo/road-and-street-lights-at-night-9920643/
