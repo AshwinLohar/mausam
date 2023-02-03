@@ -52,6 +52,49 @@ function resetLocations() {
   }
 }
 
+var highlighted = null;
+
+search_box = document.getElementById("search_box");
+search_box.addEventListener("keydown", (e) => {
+  if (e.code == "Enter" && highlighted == null) {
+    search();
+  } else if (e.code == "Enter" && highlighted != null) {
+    getData(highlighted);
+    highlighted = null;
+    search_box.blur();
+  }
+});
+search_box.addEventListener("keydown", (e) => {
+  sugg_opts = document.querySelectorAll(".suggestion_options");
+  if (e.code == "ArrowDown") {
+    if (highlighted == null) {
+      highlighted = 0;
+      sugg_opts[highlighted].style.fontSize = "1.05em";
+    } else if (highlighted < sugg_opts.length - 1) {
+      sugg_opts[highlighted].style.fontSize = "1em";
+      highlighted += 1;
+      sugg_opts[highlighted].style.fontSize = "1.05em";
+    } else if (highlighted < sugg_opts.length) {
+      sugg_opts[highlighted].style.fontSize = "1em";
+      highlighted = 0;
+      sugg_opts[highlighted].style.fontSize = "1.05em";
+    }
+  } else if (e.code == "ArrowUp") {
+    if (highlighted == null) {
+      highlighted = sugg_opts.length - 1;
+      sugg_opts[highlighted].style.fontSize = "1.05em";
+    } else if (highlighted >= 1) {
+      sugg_opts[highlighted].style.fontSize = "1em";
+      highlighted -= 1;
+      sugg_opts[highlighted].style.fontSize = "1.05em";
+    } else if (highlighted < 1) {
+      sugg_opts[highlighted].style.fontSize = "1em";
+      highlighted = sugg_opts.length - 1;
+      sugg_opts[highlighted].style.fontSize = "1.05em";
+    }
+  }
+});
+
 function search() {
   search_location = document.getElementById("search_box").value;
   const location_list = [];
@@ -68,7 +111,6 @@ function search() {
   xmlhttp.send();
   xmlhttp.onload = function () {
     const myObj = JSON.parse(this.responseText);
-    console.log(myObj);
     s.innerHTML = "";
     for (var i = 0; i < myObj.length; i++) {
       let temp = document.createElement("a");

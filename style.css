@@ -8,7 +8,11 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 200;
 }
+html {
+    height: 100%;
+}
 #body {
+    min-height: 100%;
     background-image: url('assets/C3A5C0.jpg');
     background-repeat: no-repeat;
     background-position: top left;
@@ -59,6 +63,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 0.1em;
 }
 #current_temp {
     font-size: 6em;
@@ -73,7 +78,7 @@
     aspect-ratio: 1 / 1;
 }
 #current_icon {
-    height: 5em;
+    height: 4.2em;
     aspect-ratio: 1 / 1;
     overflow: hidden;
 
@@ -86,7 +91,7 @@
 /*----------glass----------*/
 .glass {
     width: 40vw;
-    height: 100%;
+    min-height: 100%;
     background: linear-gradient(135deg , rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -249,7 +254,61 @@ body::-webkit-scrollbar {
 }
 /*-----future_forecast_ends-----*/
 
+@media only screen and (max-width: 1024px) {
+    * {
+        font-size: 1.2vw;
+    }
+}
 
+@media only screen and (max-width: 960px) {
+    * {
+        font-size: 2vw;
+    }
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .left {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1em 1em;
+        align-items: flex-start;
+    }
+    .left_filler_big {
+    }
+    .glass {
+        width: 100%;
+    }
+    .current {
+        width: 70%;
+        gap: 1em;
+        justify-content: flex-start;
+    }
+    #current_temp {
+        font-size: 4em;
+    }
+    #location {
+        font-size: 2em;
+    }
+    #time {
+        font-size: 1em;
+    }
+    .crop_container {
+        height: 2.7em;
+        aspect-ratio: 1 / 1;
+    }
+    #current_icon {
+        height: 2.7em;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+    
+    }
+    #current_condition {
+        font-size: 1em;
+    }
+}
 
 @media only screen and (max-width: 425px) {
     * {
@@ -273,29 +332,29 @@ body::-webkit-scrollbar {
     }
     .current {
         width: 100%;
-        gap: 0.7em;
-        justify-content: space-evenly;
+        gap: 1em;
+        justify-content: flex-start;
     }
     #current_temp {
         font-size: 3em;
     }
     #location {
-        font-size: 1em;
+        font-size: 1.3em;
     }
     #time {
-        font-size: 1em;
+        font-size: 0.86em;
     }
     .crop_container {
-        height: 1.5em;
+        height: 1.7em;
         aspect-ratio: 1 / 1;
     }
     #current_icon {
-        height: 2em;
+        height: 1.7em;
         aspect-ratio: 1 / 1;
         overflow: hidden;
     
     }
     #current_condition {
-        font-size: 1em;
+        font-size: 0.86em;
     }
 }
