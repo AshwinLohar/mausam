@@ -1,14 +1,7 @@
-const apiKey = "72b830125cec4469997133741230901";
-
-/*-----setting_button_color-----*/
-/*const div = document.querySelector("#body");
-const style = window.getComputedStyle(div, false);
-const bi = style.backgroundImage.slice(-12, -6);
-console.log(bi);
-document.getElementById("search_button").style.backgroundColor = "#" + bi;*/
+import { apiKey } from "./hide.js";
 
 /*-----default_locations-----*/
-default_locations = [
+const default_locations = [
   "Bombay, Maharashtra, India",
   "New Delhi, Delhi, India",
   "Windsor, Ontario, Canada",
@@ -54,7 +47,7 @@ function resetLocations() {
 
 var highlighted = null;
 
-search_box = document.getElementById("search_box");
+let search_box = document.getElementById("search_box");
 search_box.addEventListener("keydown", (e) => {
   if (e.code == "Enter" && highlighted == null) {
     search();
@@ -65,7 +58,7 @@ search_box.addEventListener("keydown", (e) => {
   }
 });
 search_box.addEventListener("keydown", (e) => {
-  sugg_opts = document.querySelectorAll(".suggestion_options");
+  let sugg_opts = document.querySelectorAll(".suggestion_options");
   if (e.code == "ArrowDown") {
     if (highlighted == null) {
       highlighted = 0;
@@ -95,8 +88,8 @@ search_box.addEventListener("keydown", (e) => {
   }
 });
 
-function search() {
-  search_location = document.getElementById("search_box").value;
+export function search() {
+  let search_location = document.getElementById("search_box").value;
   const location_list = [];
   let s = document.querySelector(".suggestion");
 
@@ -125,7 +118,7 @@ function search() {
 }
 
 /*-----seach_option_eventlistner-----*/
-function getData(i) {
+export function getData(i) {
   let temp = document.getElementsByClassName("suggestion_options");
   var location = temp[i].innerHTML;
   const xmlhttp = new XMLHttpRequest();
@@ -141,7 +134,7 @@ function getData(i) {
   xmlhttp.onload = function () {
     const myObj = JSON.parse(this.responseText);
     setBackground(myObj);
-    data = [myObj.current.temp_c, myObj.location.name];
+    let data = [myObj.current.temp_c, myObj.location.name];
     const d = new Date(myObj.location.localtime);
     data.push(
       pad(d.getHours()) +
