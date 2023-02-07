@@ -1,4 +1,6 @@
-import { apiKey } from "./hide.js";
+import { getWeather, getLocation } from "./hide.js";
+window.getData = getData;
+window.search = search;
 
 /*-----default_locations-----*/
 const default_locations = [
@@ -90,20 +92,9 @@ search_box.addEventListener("keydown", (e) => {
 
 export function search() {
   let search_location = document.getElementById("search_box").value;
-  const location_list = [];
   let s = document.querySelector(".suggestion");
 
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.open(
-    "GET",
-    "http://api.weatherapi.com/v1/search.json?key=" +
-      apiKey +
-      "&q=" +
-      search_location
-  );
-  xmlhttp.send();
-  xmlhttp.onload = function () {
-    const myObj = JSON.parse(this.responseText);
+  getLocation(search_location).then((myObj) => {
     s.innerHTML = "";
     for (var i = 0; i < myObj.length; i++) {
       let temp = document.createElement("a");
@@ -114,25 +105,14 @@ export function search() {
         myObj[i].name + ", " + myObj[i].region + ", " + myObj[i].country;
       s.append(temp);
     }
-  };
+  });
 }
 
 /*-----seach_option_eventlistner-----*/
 export function getData(i) {
   let temp = document.getElementsByClassName("suggestion_options");
   var location = temp[i].innerHTML;
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.open(
-    "GET",
-    "http://api.weatherapi.com/v1/forecast.json?key=" +
-      apiKey +
-      "&q=" +
-      location +
-      "&days=7&aqi=no&alerts=no"
-  );
-  xmlhttp.send();
-  xmlhttp.onload = function () {
-    const myObj = JSON.parse(this.responseText);
+  getWeather(location).then((myObj) => {
     setBackground(myObj);
     let data = [myObj.current.temp_c, myObj.location.name];
     const d = new Date(myObj.location.localtime);
@@ -167,7 +147,7 @@ export function getData(i) {
     assignFutureForecast(myObj);
     resetLocations();
     document.getElementById("search_box").value = "";
-  };
+  });
 }
 
 function pad(number) {
