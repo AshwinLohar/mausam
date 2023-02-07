@@ -9,11 +9,11 @@ Beacuse I wanted a clean, modern and asthetic experience checking the weather.
 # How to run
 
 - Clone the project
-- Create "hide.js"
-- Add following to "hide.js
+- Rename "example.hide.js" to "hide.js"
+- Add your API_key that you got from [weatherapi](https://www.weatherapi.com/)
 
 ```bash
-export const apiKey = "you_api_key";
+const apiKey = "you_api_key";
 ```
 
 # Technologies Used
